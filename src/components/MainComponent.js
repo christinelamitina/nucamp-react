@@ -41,7 +41,7 @@ class Main extends Component {
                     comments={this.state.comments.filter(comment => comment.campsiteId === +match.params.campsiteId)}
                 />
             );
-        };   
+        }   
 
         return (
             <div>
@@ -59,5 +59,6 @@ class Main extends Component {
         );
     };
 }
+
 
 export default Main;
