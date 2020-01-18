@@ -1,8 +1,16 @@
-import React from 'react';
-import { Card, CardImg, CardText, CardBody, Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import React, { Component } from 'react';
+import { Card, CardImg, CardText, CardBody, Breadcrumb, BreadcrumbItem, Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
-
+class CommentForm extends Component {
+    render(){
+        return(
+            <div>
+                <Button outline color="secondary" size="large"><i className="fa fa-pencil" /> Submit Comment</Button>{' '}
+            </div>
+        )
+    }
+}
 function RenderCampsite({campsite}) {
         return(
             <div className="col-md-5 m-1">
@@ -29,6 +37,7 @@ function RenderComments({comments}) {
                                 </div>
                             );
                         })}
+                         <CommentForm />
                     </div>
             );
         }
