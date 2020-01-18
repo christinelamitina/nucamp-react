@@ -3,6 +3,8 @@ import { Card, CardImg, CardText, CardBody, Breadcrumb, BreadcrumbItem, Button, 
 import { Link } from 'react-router-dom';
 import { Control, LocalForm, Errors } from 'react-redux-form';
 
+const minLength = len => val => val && (val.length >= len);
+const maxLength = len => val => !val || (val.length <= len);
 
 class CommentForm extends Component {
     constructor(props) {
@@ -30,7 +32,7 @@ class CommentForm extends Component {
                     <LocalForm onSubmit={values => this.handleSubmit(values)}>
                         <Row className="form-group">
                             <Col>
-                                <Label htmlFor=".rating">Rating</Label>
+                                <Label htmlFor=".rating">Rating (5 being best)</Label>
                                 <Control.select model=".rating" className="form-control" name="rating">
                                     <option>1</option>
                                     <option>2</option>
@@ -41,11 +43,28 @@ class CommentForm extends Component {
                             </Col>
                         </Row>
                         <Row className="form-group">
-                            <Col>
+                                <Col>
                                 <Label htmlFor=".name">Your Name</Label>
-                                <Control.text model=".name" className="form-control" id="name" name="name" placeholder="Your Name" />
-                            </Col>
-                        </Row>
+                                    <Control.text model=".name" id="name" name="name"
+                                        placeholder="Your Name"
+                                        className="form-control"
+                                        validators={{
+                                            minLength: minLength(2),
+                                            maxLength: maxLength(15)
+                                        }}
+                                    />
+                                    <Errors
+                                        className="text-danger"
+                                        model=".name"
+                                        show="touched"
+                                        component="div"
+                                        messages={{
+                                            minLength: 'Must be at least 2 characters',
+                                            maxLength: 'Must be 15 characters or less'
+                                        }}
+                                    />
+                                </Col>
+                            </Row>
                         <Row className="form-group">
                             <Col>
                                 <Label htmlFor="comment">Comment</Label>
