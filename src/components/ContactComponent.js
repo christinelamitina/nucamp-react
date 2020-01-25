@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Breadcrumb, BreadcrumbItem, Button, Label, Row, Col } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import { Control, Form, Errors, actions } from 'react-redux-form';
+import { Control, Form, Errors } from 'react-redux-form';
+import { Fade } from 'react-animation-components';
 
 
 const required = val => val && val.length;
@@ -60,16 +61,20 @@ class Contact extends Component {
     
                 <div className="row row-content align-items-center">
                     <div className="col-sm-4">
+                    <Fade in iterations={5.5}>
                         <h5>Our Address</h5>
                         <address>
                             1 Nucamp Way<br />
                             Seattle, WA 98001<br />
                             U.S.A.
                         </address>
+                    </Fade>
                     </div>
                     <div className="col">
+                    <Fade in iterations={5.5}>
                         <a role="button" className="btn btn-link" href="tel:+12065551234"><i className="fa fa-phone"></i> 1-206-555-1234</a><br />
                         <a role="button" className="btn btn-link" href="mailto:fakeemail@fakeemail.co"><i className="fa fa-envelope-o"></i> campsites@nucamp.co</a>
+                    </Fade>
                     </div>
                 </div>
 
