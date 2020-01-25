@@ -4,13 +4,6 @@ import { Link } from 'react-router-dom';
 
 
 function About(props) {
-
-    const partners = props.partners.map(partner => {
-        return (
-            <Media tag="li" key={partner.id}><RenderPartner partner={partner} /></Media>
-        );
-    });
-
     return (
         <div className="container">
             <div className="row">
@@ -64,9 +57,7 @@ function About(props) {
                     <h3>Community Partners</h3>
                 </div>
                 <div className="col mt-4">
-                    <Media list>
-                        {partners}
-                    </Media>
+                    <PartnerList partners={props.partners} />
                 </div>
             </div>
         </div>
@@ -89,5 +80,37 @@ function RenderPartner({partner}) {
         return <div />
     }
 }
+
+function PartnerList(props){
+    const partners = props.partners.map(partner => {
+        return (
+            <Media tag="li" key={partner.id}><RenderPartner partner={partner} /></Media>
+        );
+    });
+    
+    if (props.isLoading) {
+        return (
+            <Loading />
+        );
+    }
+
+    else if (props.errMess) {
+        return (
+            <div className = "col">
+                <h4>{props.errMess}</h4>
+            </div>
+        );
+    }
+
+    else () {
+        return (
+            <div className = "col-mt-4">
+                <Media list>
+                        {props.partners}
+                    </Media>
+            </div>
+        );
+    }
+
 
 export default About;
