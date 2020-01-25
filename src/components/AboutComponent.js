@@ -1,6 +1,7 @@
 import React from 'react';
 import { Breadcrumb, BreadcrumbItem, Card, CardBody, CardHeader, Media } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import { Loading } from './LoadingComponent';
 
 
 function About(props) {
@@ -102,7 +103,7 @@ function PartnerList(props){
         );
     }
 
-    else () {
+
         return (
             <div className = "col-mt-4">
                 <Media list>
@@ -110,7 +111,7 @@ function PartnerList(props){
                     </Media>
             </div>
         );
-    }
-
+   
+}
 
 export default About;
